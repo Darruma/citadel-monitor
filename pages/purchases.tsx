@@ -1,14 +1,14 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_PURCHASES } from "../apollo/queries"
 import { ItemsWrapper, ItemWrapper, DataWrapper, DataText, TitleText } from "../components/Events"
+import { ETHERSCAN_URL } from "../constants"
 
 function Purchases() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
     if (data) {
         return <ItemsWrapper>
             {data.fundingPurchases.map((fp) => {
-                console.log(fp.citadelOut)
-                return <ItemWrapper>
+                return <ItemWrapper key={fp.id}>
                     <DataWrapper>
                         <DataText>{fp.funding.token.symbol}</DataText>
                         <TitleText>Token</TitleText>
@@ -25,6 +25,15 @@ function Purchases() {
                         <DataText>{fp.blockNumber}</DataText>
                         <TitleText>Block number</TitleText>
                     </DataWrapper>
+                    <DataWrapper>
+                        <DataText>
+                            <a target="_blank" href={`${ETHERSCAN_URL}/tx/${fp.id}`}>
+                                {fp.id.substring(0, 5)}
+                            </a>
+                        </DataText>
+                        <TitleText>Transaction </TitleText>
+                    </DataWrapper>
+
                 </ItemWrapper>
             })}
         </ItemsWrapper>
