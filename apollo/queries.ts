@@ -7,7 +7,9 @@ export const LOAD_PURCHASES = gql`
             amountIn
             citadelBought
             funding{
-                token
+                token {
+                    symbol
+                }
             }
             blockNumber
         }

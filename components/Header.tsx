@@ -1,15 +1,20 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
+
 const Events = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-right: 1rem;
+    margin-left: 1rem;
     width: 400px;
 `
 const Entities = styled.div`
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 200px;
+    width: 175px;
 
 `
 const HeaderWrapper = styled.div`
@@ -26,7 +31,7 @@ const HeaderWrapper = styled.div`
 const LinkWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    
     width: 100%;
 `
 
@@ -36,6 +41,21 @@ function Logo() {
     </div>
 }
 
+function Nav({ name, path }: {name: string, path: string}) {
+    const router = useRouter()
+    const currentRoute = router.pathname
+    const linkStyle = { 
+        textDecoration: currentRoute == path ? 'underline' : 'none'
+    }
+    return (
+      <Link href={path} passHref>
+        <a style={linkStyle}>
+          {name}
+        </a>
+      </Link>
+    )
+}
+
 function Header({ children }) {
     return (
         <>
@@ -43,27 +63,18 @@ function Header({ children }) {
                 <Logo></Logo>
                 <LinkWrapper>
                     <Events>
-                        <div>
-                            Locks
-                        </div>
-                        <div>
-                            Purchases
-                        </div>
-
-                        <div>
-                            XCitadel Emission
-                        </div>
+                        <Nav name="Locks" path="/locks"/>
+                        <Nav name="Purchases" path="/purchases"/>
+                        <Nav name="XCitadel Emissions" path="/emissions"/>
                     </Events>
                     <Entities>
-                        <div>Locker</div>
-                        <div>Funding</div>
+                        <Nav name="Locker" path="/locker"/>
+                        <Nav name="Funding" path="/funding"/>
                     </Entities>
                 </LinkWrapper>
 
             </HeaderWrapper>
-            <div>
                 {children}
-            </div>
         </>
     )
 
