@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -35,24 +36,18 @@ const LinkWrapper = styled.div`
     width: 100%;
 `
 
-function Logo() {
-    return <div>
-        CitadelDao
-    </div>
-}
-
-function Nav({ name, path }: {name: string, path: string}) {
+function Nav({ name, path }: { name: string, path: string }) {
     const router = useRouter()
     const currentRoute = router.pathname
-    const linkStyle = { 
+    const linkStyle = {
         textDecoration: currentRoute == path ? 'underline' : 'none'
     }
     return (
-      <Link href={path} passHref>
-        <a style={linkStyle}>
-          {name}
-        </a>
-      </Link>
+        <Link href={path} passHref>
+            <a style={linkStyle}>
+                {name}
+            </a>
+        </Link>
     )
 }
 
@@ -60,21 +55,27 @@ function Header({ children }) {
     return (
         <>
             <HeaderWrapper>
-                <Logo></Logo>
+                <Image 
+                    src="/citadel.svg"
+                    alt="CitadelDao"
+                    height={200}
+                    width={200}
+                />
+
                 <LinkWrapper>
                     <Events>
-                        <Nav name="Locks" path="/locks"/>
-                        <Nav name="Purchases" path="/purchases"/>
-                        <Nav name="XCitadel Emissions" path="/emissions"/>
+                        <Nav name="Locks" path="/locks" />
+                        <Nav name="Purchases" path="/purchases" />
+                        <Nav name="XCitadel Emissions" path="/emissions" />
                     </Events>
                     <Entities>
-                        <Nav name="Locker" path="/locker"/>
-                        <Nav name="Funding" path="/funding"/>
+                        <Nav name="Locker" path="/locker" />
+                        <Nav name="Funding" path="/funding" />
                     </Entities>
                 </LinkWrapper>
 
             </HeaderWrapper>
-                {children}
+            {children}
         </>
     )
 

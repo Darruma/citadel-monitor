@@ -15,15 +15,15 @@ function Purchases() {
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>{fp.amountIn}</DataText>
-                        <TitleText>Buy amount</TitleText>
+                        <TitleText>Buy Amount</TitleText>
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>{fp.citadelBought}</DataText>
-                        <TitleText>Citadel purchased</TitleText>
+                        <TitleText>Citadel Purchased</TitleText>
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>{fp.blockNumber}</DataText>
-                        <TitleText>Block number</TitleText>
+                        <TitleText>Block Number</TitleText>
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>
@@ -31,7 +31,7 @@ function Purchases() {
                                 {fp.id.substring(0, 5)}
                             </a>
                         </DataText>
-                        <TitleText>Transaction </TitleText>
+                        <TitleText>Transaction</TitleText>
                     </DataWrapper>
 
                 </ItemWrapper>

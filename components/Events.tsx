@@ -20,7 +20,7 @@ export const ItemWrapper = styled.div`
 export const DataWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 200px;
+    min-width: 175px;
     margin: 1rem;
 `
 export const TitleText = styled.div`

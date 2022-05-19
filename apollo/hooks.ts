@@ -3,6 +3,7 @@ import { DocumentNode } from "graphql"
 
 export function usePolledQuery(query: DocumentNode) {
     return useQuery(query, {
-        pollInterval: 500
+        pollInterval: 500,
+        fetchPolicy: "cache-and-network"
     })
 }
