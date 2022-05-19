@@ -1,18 +1,10 @@
 import { useQuery } from "@apollo/client"
 import { useEffect, useState } from "react"
+import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_PURCHASES } from "../apollo/queries"
 
 function Purchases() {
-    const [purchases, setPurchases] = useState([])
-    const { data, loading, error } = useQuery(LOAD_PURCHASES, {
-        pollInterval: 500
-    })
-    useEffect(() => {
-        if(data) {
-            console.log(data)
-            setPurchases(data)
-        }
-    }, [data])
+    const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
     return <div>
 
     </div>

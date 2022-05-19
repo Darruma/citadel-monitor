@@ -26,3 +26,17 @@ export const LOAD_LOCKS = gql`
         }
     }
 `
+
+export const LOAD_FUNDING = gql`
+    query loadFunding {
+        fundings(first:100) {
+            token {
+                symbol
+            }
+            minPrice
+            maxPrice
+            currentPrice
+            flag
+        }
+    }
+`
