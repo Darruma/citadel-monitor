@@ -32,7 +32,6 @@ const HeaderWrapper = styled.div`
 const LinkWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    
     width: 100%;
 `
 

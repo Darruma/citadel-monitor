@@ -1,7 +1,7 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_EMISSIONS } from "../apollo/queries"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
-
+import { ETHERSCAN_URL } from "../constants"
 function Emissions() {
     const { data, loading, error } = usePolledQuery(LOAD_EMISSIONS)
     if (data.stakedCitadelEmission) {
@@ -24,6 +24,14 @@ function Emissions() {
                         <DataWrapper>
                             <DataText>{emission.blockNumber}</DataText>
                             <TitleText>blockNumber</TitleText>
+                        </DataWrapper>
+                        <DataWrapper>
+                            <DataText>
+                                <a target="_blank" href={`${ETHERSCAN_URL}/tx/${emission.id}`}>
+                                    {emission.id.substring(0, 5)}
+                                </a>
+                            </DataText>
+                            <TitleText>Transaction</TitleText>
                         </DataWrapper>
                     </ItemWrapper>)
                 })}
