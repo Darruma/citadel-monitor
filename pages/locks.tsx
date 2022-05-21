@@ -6,12 +6,16 @@ import { ETHERSCAN_URL } from "../constants"
 
 function Locks() {
     const { data, loading, error } = usePolledQuery(LOAD_LOCKS)
-    if (data) {
+    if (data.stakedCitadelLocks) {
         return <ItemsWrapper>
             {data.stakedCitadelLocks.map((lock) => {
                 return <ItemWrapper key={lock.id}>
                     <DataWrapper>
-                        <DataText>{lock.user.id}</DataText>
+                        <DataText>
+                            <a target="_blank" href={`${ETHERSCAN_URL}/address/${lock.user.id}`}>
+                                {lock.user.id.substring(0, 5)}
+                            </a>
+                        </DataText>
                         <TitleText>Account</TitleText>
                     </DataWrapper>
                     <DataWrapper>

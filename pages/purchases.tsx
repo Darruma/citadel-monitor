@@ -5,7 +5,7 @@ import { ETHERSCAN_URL } from "../constants"
 
 function Purchases() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
-    if (data) {
+    if (data.fundingPurchases) {
         return <ItemsWrapper>
             {data.fundingPurchases.map((fp) => {
                 return <ItemWrapper key={fp.id}>

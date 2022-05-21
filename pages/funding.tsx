@@ -5,7 +5,7 @@ import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../
 
 function Funding() {
     const { data, loading, error } = usePolledQuery(LOAD_FUNDING)
-    if (data) {
+    if (data.fundings) {
         return (
             <ItemsWrapper>
                 {data.fundings.map((fd) => {

@@ -42,3 +42,17 @@ export const LOAD_FUNDING = gql`
         }
     }
 `
+
+export const LOAD_EMISSIONS = gql`
+    query loadEmissions {
+        stakedCitadelEmission(first:100, orderBy: blockNumber, orderDirection: desc) {
+            id
+            token {
+                symbol
+            }
+            amount
+            blockNumber
+            type
+        }
+    }
+`
