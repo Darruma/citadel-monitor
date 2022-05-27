@@ -1,5 +1,6 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_EMISSIONS } from "../apollo/queries"
+import { Emission } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
 function Emissions() {
@@ -7,7 +8,7 @@ function Emissions() {
     if (data.stakedCitadelEmission) {
         return (
             <ItemsWrapper>
-                {data.stakedCitadelEmission.map((emission) => {
+                {data.stakedCitadelEmission.map((emission: Emission) => {
                     return (<ItemWrapper key={emission.id}>
                         <DataWrapper>
                             <DataText>{emission.token.symbol}</DataText>

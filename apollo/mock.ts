@@ -1,20 +1,72 @@
+import Purchases from '../pages/purchases';
 import { LOAD_EMISSIONS, LOAD_FUNDING, LOAD_LOCKS, LOAD_PURCHASES } from './queries';
+import { Emission, Funding, Lock, Purchase } from './types';
 
-const FUNDING_DATA = [
-    {id: "1",token: {symbol : 'CVX'}, minPrice: 0, maxPrice: 100, currentPrice: 50 },
-    {id: "2", token: {symbol : 'WBTC'}, minPrice: 10, maxPrice: 20, currentPrice: 15 },
+
+const MOCK_SYMBOLS = ["WBTC", "CTDL", "CVX"]
+const MOCK_ADDRS = [
+    "0x2DBb724A506935783A542B4fcc19cd19E46AA167",
+    "0x7f268357A8c2552623316e2562D90e642bB538E5",
+    "0xDFE7772e8647CF105C15Da6319Efd64C8d4Fb12D",
+    "0xa24787320ede4CC19D800bf87B41Ab9539c4dA9D"
 ]
-const EMISSION_DATA = [
-   {id: "1", token: {symbol: 'WBTC'}, amount: 100, type: 'Treasury Yield', blockNumber: 1224},
-   {id: "2", token: {symbol: 'CTDL'}, amount: 200, type: 'Funding Yield', blockNumber: 1234} 
-]
-const LOCKS_DATA = [
-  {id: "1", user:{id:'0x123'}, epoch: 2, paid: 100, locked: 200, blockNumber: 200},
-  {id: "2", user:{id:'0x123'}, epoch: 1, paid: 100, locked: 0, blockNumber: 10}
-]
-const PURCHASES_DATA = [
-  {id: "1", funding:{token:{symbol:'CVX'}}, amountIn: 2, citadelBought: 100, blockNumber: 23}
-]
+
+
+function randInt(int: number): number {
+    return Math.floor(Math.random() * int)
+}
+function mockFunding(amount: number): Funding[] {
+    return [
+        {id: "1",token: {symbol : 'CVX'}, minPrice: 0, maxPrice: 100, currentPrice: 50 },
+        {id: "2", token: {symbol : 'WBTC'}, minPrice: 10, maxPrice: 20, currentPrice: 15 },
+    ]
+}
+function mockEmissions(amount: number): Emission[] {
+    return Array.from(Array(amount).keys()).map(e => {
+        return {
+            id: e.toString(),
+            token: {
+                symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)]
+            },
+            blockNumber: Math.floor(Math.random())* 10000,
+            amount: Math.floor(Math.random()) * 10000,
+            type: ["Treasury Yield", "Funding Yield", "Additional Tokens"][randInt(3)]
+
+        }
+    })
+}
+function mockLocks(amount: number): Lock[] {
+    return Array.from(Array(amount).keys()).map(e => {
+        return {
+            id: e.toString(),
+            user: {
+                id: MOCK_ADDRS[randInt(MOCK_ADDRS.length)]
+            },
+            epoch:randInt(100),
+            paid: randInt(1000),
+            locked: randInt(1000),
+            blockNumber: randInt(1000000)
+        }
+    })
+}
+function mockPurchases(amount: number): Purchase[] {
+    return Array.from(Array(amount).keys()).map(e => {
+        return {
+            id: e.toString(),
+            funding: {
+                token: {
+                    symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)]
+                }
+            },
+            amountIn: randInt(1000),
+            citadelBought: randInt(10000),
+            user: {
+                id: MOCK_ADDRS[randInt(MOCK_ADDRS.length)]
+            },
+            blockNumber: randInt(1000000)
+        }
+    }) 
+}
 function mockQuery(query) {
     let result = {
         data: {},
@@ -24,16 +76,16 @@ function mockQuery(query) {
     const fieldName = query.definitions[0].selectionSet.selections[0].name.value
     switch(query) {
         case LOAD_FUNDING:
-            result.data[fieldName] = FUNDING_DATA
+            result.data[fieldName] = mockFunding(2)
             break;
         case LOAD_EMISSIONS:
-            result.data[fieldName] = EMISSION_DATA
+            result.data[fieldName] = mockEmissions(10)
             break;
         case LOAD_LOCKS:
-            result.data[fieldName] = LOCKS_DATA
+            result.data[fieldName] = mockLocks(10)
             break;
         case LOAD_PURCHASES:
-            result.data[fieldName] = PURCHASES_DATA
+            result.data[fieldName] = mockPurchases(10)
             break;
     }
     return result

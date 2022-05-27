@@ -1,5 +1,6 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_FUNDING } from "../apollo/queries"
+import { Funding as FundingData } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
 
 
@@ -8,7 +9,7 @@ function Funding() {
     if (data.fundings) {
         return (
             <ItemsWrapper>
-                {data.fundings.map((fd) => {
+                {data.fundings.map((fd: FundingData) => {
                     return (<ItemWrapper key={fd.id}>
                         <DataWrapper>
                             <DataText>{fd.token.symbol}</DataText>

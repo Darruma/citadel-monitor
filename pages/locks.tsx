@@ -1,14 +1,16 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_LOCKS } from "../apollo/queries"
+import { Lock } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
 
 
 function Locks() {
     const { data, loading, error } = usePolledQuery(LOAD_LOCKS)
-    if (data.stakedCitadelLocks) {
+    console.log(data)
+    if (data) {
         return <ItemsWrapper>
-            {data.stakedCitadelLocks.map((lock) => {
+            {data.stakedCitadelLocks.map((lock: Lock) => {
                 return <ItemWrapper key={lock.id}>
                     <DataWrapper>
                         <DataText>

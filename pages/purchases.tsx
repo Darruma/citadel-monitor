@@ -1,5 +1,6 @@
 import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_PURCHASES } from "../apollo/queries"
+import { Purchase } from "../apollo/types"
 import { ItemsWrapper, ItemWrapper, DataWrapper, DataText, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
 
@@ -7,7 +8,7 @@ function Purchases() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
     if (data.fundingPurchases) {
         return <ItemsWrapper>
-            {data.fundingPurchases.map((fp) => {
+            {data.fundingPurchases.map((fp: Purchase) => {
                 return <ItemWrapper key={fp.id}>
                     <DataWrapper>
                         <DataText>{fp.funding.token.symbol}</DataText>
