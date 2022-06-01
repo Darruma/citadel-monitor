@@ -24,6 +24,7 @@ export const LOAD_LOCKS = gql`
             }
             epoch
             paid
+            locked
             blockNumber
         }
     }
@@ -38,6 +39,9 @@ export const LOAD_FUNDING = gql`
             minPrice
             maxPrice
             currentPrice
+            minDiscount
+            maxDiscount
+            discount
             flag
         }
     }

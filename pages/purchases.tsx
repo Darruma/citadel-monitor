@@ -15,6 +15,14 @@ function Purchases() {
                         <TitleText>Token</TitleText>
                     </DataWrapper>
                     <DataWrapper>
+                        <DataText>
+                            <a target="_blank" href={`${ETHERSCAN_URL}/address/${fp.buyer}`}>
+                                {fp.buyer.substring(0, 5)}
+                            </a>
+                        </DataText>
+                        <TitleText>Account</TitleText>
+                    </DataWrapper>
+                    <DataWrapper>
                         <DataText>{fp.amountIn}</DataText>
                         <TitleText>Buy Amount</TitleText>
                     </DataWrapper>

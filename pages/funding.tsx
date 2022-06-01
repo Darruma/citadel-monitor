@@ -27,6 +27,10 @@ function Funding() {
                             <DataText>{fd.currentPrice}</DataText>
                             <TitleText>Current Price</TitleText>
                         </DataWrapper>
+                        <DataWrapper>
+                            <DataText>{fd.discount}</DataText>
+                            <TitleText>Current Discount</TitleText>
+                        </DataWrapper>
                     </ItemWrapper>)
                 })}
             </ItemsWrapper>

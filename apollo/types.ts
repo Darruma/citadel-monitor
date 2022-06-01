@@ -15,6 +15,7 @@ export interface Funding {
     }
     minPrice: number
     maxPrice: number
+    discount: number
     currentPrice: number
 }
 export interface Emission {
@@ -34,6 +35,7 @@ export interface Purchase {
             symbol: string
         }
     }
+    buyer: string
     amountIn: number
     citadelBought: number
     blockNumber: number

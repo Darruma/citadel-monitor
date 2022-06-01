@@ -13,6 +13,7 @@ export const ItemWrapper = styled.div`
     flex-direction: row;
     margin: 0 auto;
     background-color: #43455C;
+    width: min-content;
     @media (max-width: 800px) {
         flex-wrap:wrap;
         width: 70%;

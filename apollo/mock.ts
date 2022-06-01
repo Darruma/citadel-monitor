@@ -17,8 +17,8 @@ function randInt(int: number): number {
 }
 function mockFunding(amount: number): Funding[] {
     return [
-        {id: "1",token: {symbol : 'CVX'}, minPrice: 0, maxPrice: 100, currentPrice: 50 },
-        {id: "2", token: {symbol : 'WBTC'}, minPrice: 10, maxPrice: 20, currentPrice: 15 },
+        {id: "1",token: {symbol : 'CVX'}, minPrice: 0, maxPrice: 100, currentPrice: 50, discount: 100 },
+        {id: "2", token: {symbol : 'WBTC'}, minPrice: 10, maxPrice: 20, currentPrice: 15, discount: 300 },
     ]
 }
 function mockEmissions(amount: number): Emission[] {
@@ -28,8 +28,8 @@ function mockEmissions(amount: number): Emission[] {
             token: {
                 symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)]
             },
-            blockNumber: Math.floor(Math.random())* 10000,
-            amount: Math.floor(Math.random()) * 10000,
+            blockNumber: randInt(10000),
+            amount: randInt(1000),
             type: ["Treasury Yield", "Funding Yield", "Additional Tokens"][randInt(3)]
 
         }
@@ -60,9 +60,7 @@ function mockPurchases(amount: number): Purchase[] {
             },
             amountIn: randInt(1000),
             citadelBought: randInt(10000),
-            user: {
-                id: MOCK_ADDRS[randInt(MOCK_ADDRS.length)]
-            },
+            buyer: MOCK_ADDRS[randInt(MOCK_ADDRS.length)],
             blockNumber: randInt(1000000)
         }
     }) 

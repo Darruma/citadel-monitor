@@ -7,7 +7,6 @@ import { ETHERSCAN_URL } from "../constants"
 
 function Locks() {
     const { data, loading, error } = usePolledQuery(LOAD_LOCKS)
-    console.log(data)
     if (data) {
         return <ItemsWrapper>
             {data.stakedCitadelLocks.map((lock: Lock) => {
