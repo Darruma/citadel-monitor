@@ -18,7 +18,7 @@ function Purchases() {
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>
-                            <a target="_blank" href={`${ETHERSCAN_URL}/address/${fp.buyer.id}`}>
+                            <a target="_blank" rel="noreferrer" href={`${ETHERSCAN_URL}/address/${fp.buyer.id}`}>
                                 {fp.buyer.id.substring(0, 5)}
                             </a>
                         </DataText>
@@ -38,7 +38,7 @@ function Purchases() {
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>
-                            <a target="_blank" href={`${ETHERSCAN_URL}/tx/${fp.id}`}>
+                            <a target="_blank" rel="noreferrer" href={`${ETHERSCAN_URL}/tx/${fp.id}`}>
                                 {fp.id.substring(0, 5)}
                             </a>
                         </DataText>

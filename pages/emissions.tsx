@@ -29,7 +29,7 @@ function Emissions() {
                         </DataWrapper>
                         <DataWrapper>
                             <DataText>
-                                <a target="_blank" href={`${ETHERSCAN_URL}/tx/${emission.id}`}>
+                                <a target="_blank" rel="noreferrer" href={`${ETHERSCAN_URL}/tx/${emission.id}`}>
                                     {emission.id.substring(0, 5)}
                                 </a>
                             </DataText>

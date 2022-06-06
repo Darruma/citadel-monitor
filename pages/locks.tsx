@@ -14,7 +14,7 @@ function Locks() {
                 return <ItemWrapper key={lock.id}>
                     <DataWrapper>
                         <DataText>
-                            <a target="_blank" href={`${ETHERSCAN_URL}/address/${lock.account.id}`}>
+                            <a target="_blank" rel="noreferrer" href={`${ETHERSCAN_URL}/address/${lock.account.id}`}>
                                 {lock.account.id.substring(0, 5)}
                             </a>
                         </DataText>
@@ -38,7 +38,7 @@ function Locks() {
                     </DataWrapper>
                     <DataWrapper>
                         <DataText>
-                            <a target="_blank" href={`${ETHERSCAN_URL}/tx/${lock.id}`}>
+                            <a target="_blank" rel="noreferrer" href={`${ETHERSCAN_URL}/tx/${lock.id}`}>
                                 {lock.id.substring(0, 5)}
                             </a>
                         </DataText>
