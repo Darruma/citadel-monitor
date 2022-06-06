@@ -4,7 +4,7 @@ import { DocumentNode } from "graphql";
 import mockQuery from "./mock";
 
 export function usePolledQuery(query: DocumentNode) {
-  if (isDevEnvironment) {
+  if (!isDevEnvironment) {
     return useQuery(query, {
       pollInterval: 500,
       fetchPolicy: "cache-and-network",
