@@ -4,7 +4,7 @@ export interface Lock {
     paid: number
     locked: number
     blockNumber: number
-    user: {
+    account: {
         id: string
     }
 }
@@ -35,7 +35,9 @@ export interface Purchase {
             symbol: string
         }
     }
-    buyer: string
+    buyer: {
+        id: string
+    }
     amountIn: number
     citadelBought: number
     blockNumber: number

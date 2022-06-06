@@ -5,10 +5,11 @@ import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../
 import { ETHERSCAN_URL } from "../constants"
 function Emissions() {
     const { data, loading, error } = usePolledQuery(LOAD_EMISSIONS)
-    if (data.stakedCitadelEmission) {
+    console.log(data)
+    if (data) {
         return (
             <ItemsWrapper>
-                {data.stakedCitadelEmission.map((emission: Emission) => {
+                {data.stakedCitadelEmissions.map((emission: Emission) => {
                     return (<ItemWrapper key={emission.id}>
                         <DataWrapper>
                             <DataText>{emission.token.symbol}</DataText>

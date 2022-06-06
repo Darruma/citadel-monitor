@@ -1,4 +1,3 @@
-import Purchases from '../pages/purchases';
 import { LOAD_EMISSIONS, LOAD_FUNDING, LOAD_LOCKS, LOAD_PURCHASES } from './queries';
 import { Emission, Funding, Lock, Purchase } from './types';
 
@@ -39,7 +38,7 @@ function mockLocks(amount: number): Lock[] {
     return Array.from(Array(amount).keys()).map(e => {
         return {
             id: e.toString(),
-            user: {
+            account: {
                 id: MOCK_ADDRS[randInt(MOCK_ADDRS.length)]
             },
             epoch:randInt(100),
@@ -60,7 +59,7 @@ function mockPurchases(amount: number): Purchase[] {
             },
             amountIn: randInt(1000),
             citadelBought: randInt(10000),
-            buyer: MOCK_ADDRS[randInt(MOCK_ADDRS.length)],
+            buyer: {id:MOCK_ADDRS[randInt(MOCK_ADDRS.length)]},
             blockNumber: randInt(1000000)
         }
     }) 

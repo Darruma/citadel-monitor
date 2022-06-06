@@ -6,6 +6,9 @@ export const LOAD_PURCHASES = gql`
             id
             amountIn
             citadelBought
+            buyer {
+                id
+            }
             funding{
                 token {
                     symbol
@@ -19,7 +22,7 @@ export const LOAD_LOCKS = gql`
     query loadLocks {
         stakedCitadelLocks(first:100, orderBy: blockNumber, orderDirection: desc) {
             id
-            user{
+            account {
                 id
             }
             epoch
@@ -49,7 +52,7 @@ export const LOAD_FUNDING = gql`
 
 export const LOAD_EMISSIONS = gql`
     query loadEmissions {
-        stakedCitadelEmission(first:100, orderBy: blockNumber, orderDirection: desc) {
+        stakedCitadelEmissions(first:100, orderBy: blockNumber, orderDirection: desc) {
             id
             token {
                 symbol
