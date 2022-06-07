@@ -3,7 +3,7 @@ import { LOAD_PURCHASES } from "../apollo/queries"
 import { Purchase } from "../apollo/types"
 import { ItemsWrapper, ItemWrapper, DataWrapper, DataText, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
-import { formatTokenAmount, weiToEther } from "../utils"
+import { formatTokenAmount } from "../utils"
 
 function Purchases() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)

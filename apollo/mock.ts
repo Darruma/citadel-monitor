@@ -16,8 +16,8 @@ function randInt(int: number): number {
 }
 function mockFunding(amount: number): Funding[] {
     return [
-        {id: "1",token: {symbol : 'CVX'}, minPrice: 0, maxPrice: 100, currentPrice: 50, discount: 100 },
-        {id: "2", token: {symbol : 'WBTC'}, minPrice: 10, maxPrice: 20, currentPrice: 15, discount: 300 },
+        {id: "1",token: {symbol : 'CVX', decimals: 18}, minPrice: 0, maxPrice: 100, currentPrice: 50, discount: 100 },
+        {id: "2", token: {symbol : 'WBTC', decimals: 9}, minPrice: 10, maxPrice: 20, currentPrice: 15, discount: 300 },
     ]
 }
 function mockEmissions(amount: number): Emission[] {
@@ -25,7 +25,8 @@ function mockEmissions(amount: number): Emission[] {
         return {
             id: e.toString(),
             token: {
-                symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)]
+                symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)],
+                decimals: 18
             },
             blockNumber: randInt(10000),
             amount: randInt(1000),
@@ -54,7 +55,8 @@ function mockPurchases(amount: number): Purchase[] {
             id: e.toString(),
             funding: {
                 token: {
-                    symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)]
+                    symbol: MOCK_SYMBOLS[randInt(MOCK_SYMBOLS.length)],
+                    decimals: 18
                 }
             },
             amountIn: randInt(1000),
