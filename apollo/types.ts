@@ -10,9 +10,7 @@ export interface Lock {
 }
 export interface Funding {
     id: string
-    token: {
-        symbol: string
-    }
+    token: Token
     minPrice: number
     maxPrice: number
     discount: number
@@ -20,9 +18,7 @@ export interface Funding {
 }
 export interface Emission {
     id: string
-    token: {
-        symbol: string
-    }
+    token: Token
     amount: number
     type: string
     blockNumber: number
@@ -31,9 +27,7 @@ export interface Emission {
 export interface Purchase {
     id: string
     funding: {
-        token: {
-            symbol: string
-        }
+        token: Token
     }
     buyer: {
         id: string
@@ -41,4 +35,9 @@ export interface Purchase {
     amountIn: number
     citadelBought: number
     blockNumber: number
+}
+
+export interface Token {
+    symbol: string,
+    decimals: number
 }

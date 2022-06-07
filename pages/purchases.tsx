@@ -3,7 +3,7 @@ import { LOAD_PURCHASES } from "../apollo/queries"
 import { Purchase } from "../apollo/types"
 import { ItemsWrapper, ItemWrapper, DataWrapper, DataText, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
-import { weiToEther } from "../utils"
+import { formatTokenAmount, weiToEther } from "../utils"
 
 function Purchases() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
@@ -25,11 +25,11 @@ function Purchases() {
                         <TitleText>Account</TitleText>
                     </DataWrapper>
                     <DataWrapper>
-                        <DataText>{weiToEther(fp.amountIn)}</DataText>
+                        <DataText>{formatTokenAmount(fp.amountIn, fp.funding.token.decimals)}</DataText>
                         <TitleText>Buy Amount</TitleText>
                     </DataWrapper>
                     <DataWrapper>
-                        <DataText>{weiToEther(fp.citadelBought)}</DataText>
+                        <DataText>{formatTokenAmount(fp.citadelBought, fp.funding.token.decimals)}</DataText>
                         <TitleText>Citadel Purchased</TitleText>
                     </DataWrapper>
                     <DataWrapper>

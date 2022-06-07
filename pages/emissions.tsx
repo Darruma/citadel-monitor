@@ -3,24 +3,26 @@ import { LOAD_EMISSIONS } from "../apollo/queries"
 import { Emission } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
+import { formatTokenAmount, getEmissionType } from "../utils"
 function Emissions() {
     const { data, loading, error } = usePolledQuery(LOAD_EMISSIONS)
-    console.log(data)
     if (data) {
         return (
             <ItemsWrapper>
                 {data.stakedCitadelEmissions.map((emission: Emission) => {
+                    const emissionAmount = formatTokenAmount(emission.amount, emission.token.decimals)
+                    const formattedEmissionAmount = emissionAmount > 1 ? emissionAmount.toFixed(1) : emissionAmount
                     return (<ItemWrapper key={emission.id}>
                         <DataWrapper>
                             <DataText>{emission.token.symbol}</DataText>
                             <TitleText>Token</TitleText>
                         </DataWrapper>
                         <DataWrapper>
-                            <DataText>{emission.amount}</DataText>
+                            <DataText>{formattedEmissionAmount}</DataText>
                             <TitleText>Amount</TitleText>
                         </DataWrapper>
                         <DataWrapper>
-                            <DataText>{emission.type}</DataText>
+                            <DataText>{getEmissionType(emission.type)}</DataText>
                             <TitleText>Emission Type</TitleText>
                         </DataWrapper>
                         <DataWrapper>

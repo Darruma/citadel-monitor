@@ -26,7 +26,7 @@ export const ItemWrapper = styled.div`
 export const DataWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 150px;
+    width: 160px;
     @media (max-width: 800px) {
         flex: 0 0 0
         min-width: 0px;

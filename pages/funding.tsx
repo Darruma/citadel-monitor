@@ -2,7 +2,7 @@ import { usePolledQuery } from "../apollo/hooks"
 import { LOAD_FUNDING } from "../apollo/queries"
 import { Funding as FundingData } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
-
+import { formatTokenAmount } from "../utils"
 
 function Funding() {
     const { data, loading, error } = usePolledQuery(LOAD_FUNDING)
@@ -24,7 +24,7 @@ function Funding() {
                             <TitleText>Maximum Price</TitleText>
                         </DataWrapper>
                         <DataWrapper>
-                            <DataText>{fd.currentPrice}</DataText>
+                            <DataText>{formatTokenAmount(fd.currentPrice, fd.token.decimals)}</DataText>
                             <TitleText>Current Price</TitleText>
                         </DataWrapper>
                         <DataWrapper>

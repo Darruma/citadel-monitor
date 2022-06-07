@@ -3,7 +3,7 @@ import { LOAD_LOCKS } from "../apollo/queries"
 import { Lock } from "../apollo/types"
 import { DataText, DataWrapper, ItemsWrapper, ItemWrapper, TitleText } from "../components/Events"
 import { ETHERSCAN_URL } from "../constants"
-import { weiToEther } from "../utils"
+import { formatTokenAmount } from "../utils"
 
 function Locks() {
     const { data, loading, error } = usePolledQuery(LOAD_LOCKS)
@@ -25,11 +25,11 @@ function Locks() {
                         <TitleText>Epoch</TitleText>
                     </DataWrapper>
                     <DataWrapper>
-                        <DataText>{weiToEther(lock.paid)}</DataText>
+                        <DataText>{formatTokenAmount(lock.paid, 18).toFixed(1)}</DataText>
                         <TitleText>Paid</TitleText>
                     </DataWrapper>
                     <DataWrapper>
-                        <DataText>{weiToEther(lock.locked)}</DataText>
+                        <DataText>{formatTokenAmount(lock.locked, 18).toFixed(1)}</DataText>
                         <TitleText>Locked</TitleText>
                     </DataWrapper>
                     <DataWrapper>

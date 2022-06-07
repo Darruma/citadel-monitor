@@ -12,6 +12,7 @@ export const LOAD_PURCHASES = gql`
             funding{
                 token {
                     symbol
+                    decimals
                 }
             }
             blockNumber
@@ -38,6 +39,7 @@ export const LOAD_FUNDING = gql`
         fundings(first:100) {
             token {
                 symbol
+                decimals
             }
             minPrice
             maxPrice
@@ -56,6 +58,7 @@ export const LOAD_EMISSIONS = gql`
             id
             token {
                 symbol
+                decimals
             }
             amount
             blockNumber
