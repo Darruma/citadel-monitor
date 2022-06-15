@@ -16,8 +16,8 @@ function randInt(int: number): number {
 }
 function mockFunding(amount: number): Funding[] {
     return [
-        {id: "1",token: {symbol : 'CVX', decimals: 18}, minPrice: 0, maxPrice: 100, currentPrice: 50, discount: 100 },
-        {id: "2", token: {symbol : 'WBTC', decimals: 9}, minPrice: 10, maxPrice: 20, currentPrice: 15, discount: 300 },
+        {id: "1",token: {symbol : 'CVX', decimals: 18}, minPrice: 0, maxPrice: 100, currentPrice: 50, discount: 100 , purchases:[]},
+        {id: "2", token: {symbol : 'WBTC', decimals: 9}, minPrice: 10, maxPrice: 20, currentPrice: 15, discount: 300, purchases: []},
     ]
 }
 function mockEmissions(amount: number): Emission[] {

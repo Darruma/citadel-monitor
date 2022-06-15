@@ -68,7 +68,6 @@ function Header({ children }) {
                         <Nav name="XCitadel Emissions" path="/emissions" />
                     </Events>
                     <Entities>
-                        <Nav name="Locker" path="/locker" />
                         <Nav name="Funding" path="/funding" />
                     </Entities>
                 </LinkWrapper>

@@ -48,9 +48,32 @@ export const LOAD_FUNDING = gql`
             maxDiscount
             discount
             flag
+            purchases(first:100, orderBy: blockNumber, orderDirection: desc) {
+                id
+                amountIn
+                citadelBought
+                buyer {
+                    id
+                }
+                funding{
+                    token {
+                        symbol
+                        decimals
+                    }
+                }
+                blockNumber
+            }
         }
     }
 `
+
+export const LOAD_KNIGHTING_ROUNDS = gql`
+    query loadKnightingRounds {
+        knightingRounds(first:100) {
+            id
+        }
+    }
+` 
 
 export const LOAD_EMISSIONS = gql`
     query loadEmissions {

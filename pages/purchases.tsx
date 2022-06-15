@@ -5,12 +5,16 @@ import { ItemsWrapper, ItemWrapper, DataWrapper, DataText, TitleText } from "../
 import { ETHERSCAN_URL } from "../constants"
 import { formatTokenAmount } from "../utils"
 
-function Purchases() {
+
+function PurchasesContainer() {
     const { data, loading, error } = usePolledQuery(LOAD_PURCHASES)
-    console.log(data)
+    return <Purchases data={data?.fundingPurchases} loading={loading} error={error} />
+}
+
+export function Purchases({ data, loading, error }) {
     if (data) {
         return <ItemsWrapper>
-            {data.fundingPurchases.map((fp: Purchase) => {
+            {data.map((fp: Purchase) => {
                 return <ItemWrapper key={fp.id}>
                     <DataWrapper>
                         <DataText>{fp.funding.token.symbol}</DataText>
@@ -52,4 +56,4 @@ function Purchases() {
     }
 
 }
-export default Purchases
+export default PurchasesContainer

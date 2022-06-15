@@ -15,6 +15,16 @@ export interface Funding {
     maxPrice: number
     discount: number
     currentPrice: number
+    purchases: Purchase[]
+}
+
+export interface KnightingRound {
+    id: string,
+    token: Token
+    purchases: Purchase[]
+    dao: string
+    price: number
+    finalized: boolean
 }
 export interface Emission {
     id: string
@@ -22,8 +32,8 @@ export interface Emission {
     amount: number
     type: string
     blockNumber: number
-
 }
+
 export interface Purchase {
     id: string
     funding: {
